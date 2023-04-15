@@ -9,6 +9,8 @@ const inter = Inter({ subsets: ['latin'] });
 export default function Home() {
   return (
     <>
+      <title>Qiita Sample</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <main>
         <h1>Qiita</h1>
         <button onClick={fetchPosts}>aaa</button>
