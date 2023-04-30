@@ -11,3 +11,13 @@ export const fetchPosts = async () => {
     throw error;
   }
 };
+
+export const fetchPost = async (item_id: string) => {
+  try {
+    const response = await axios.get('https://qiita.com/api/v2/items' + item_id);
+    return response.data
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
