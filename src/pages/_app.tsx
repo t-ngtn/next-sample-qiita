@@ -8,12 +8,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 //     primary: {
 //       main: '#4caf50',
 //     },
-//     secondary: {
-//       main: '#f06292',
-//     },
-//     background: {
-//       default: '#e0f2f1',
-//     },
 //   },
 // });
 
@@ -29,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <Component {...pageProps} />
+      <Component {...pageProps} />
     </>
   );
 }

@@ -1,4 +1,9 @@
-import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
+import {
+  DataGrid,
+  GridColDef,
+  GridRowsProp,
+  GridToolbar,
+} from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 
 type PostsGridProps = {
@@ -8,20 +13,20 @@ type PostsGridProps = {
 
 export default function PostsGrid({ rows, columns }: PostsGridProps) {
   return (
-    <Box sx={{ height: 400, width: '100%' }}>
+    <Box sx={{ height: '100%', width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
+        slots={{
+          toolbar: GridToolbar,
+        }}
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 5,
+              pageSize: 100,
             },
           },
         }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
       />
     </Box>
   );
