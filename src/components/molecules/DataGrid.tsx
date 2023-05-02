@@ -27,6 +27,7 @@ export default function PostsGrid({ rows, columns }: PostsGridProps) {
             },
           },
         }}
+        checkboxSelection={true}
       />
     </Box>
   );
