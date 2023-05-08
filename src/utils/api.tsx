@@ -24,7 +24,7 @@ export const createQiitaItem = (
   };
 };
 
-const ACCESS_TOKEN = '64c85951e0cd821489734ec28091ce3f6bf85221';
+const ACCESS_TOKEN = '';
 
 export const fetchItems = async (setRows: Function) => {
   await axios
