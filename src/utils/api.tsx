@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export type QiitaPostData = {
+export type QiitaItem = {
   id: string;
   title: string;
   user_id: string;
@@ -8,13 +8,13 @@ export type QiitaPostData = {
   created_at: string;
 };
 
-export const createQiitaPostData = (
+export const createQiitaItem = (
   id: string,
   title: string,
   user_id: string,
   username: string,
   created_at: string
-): QiitaPostData => {
+): QiitaItem => {
   return {
     id,
     title,
@@ -24,9 +24,9 @@ export const createQiitaPostData = (
   };
 };
 
-const ACCESS_TOKEN = '';
+const ACCESS_TOKEN = '64c85951e0cd821489734ec28091ce3f6bf85221';
 
-export const fetchPosts = async (setRows: Function) => {
+export const fetchItems = async (setRows: Function) => {
   await axios
     .get('https://qiita.com/api/v2/items', {
       headers: {
@@ -38,8 +38,8 @@ export const fetchPosts = async (setRows: Function) => {
       return JSON.parse(JSON.stringify(response.data));
     })
     .then((res) => {
-      const posts: QiitaPostData[] = res.map((data: any) => {
-        return createQiitaPostData(
+      const posts: QiitaItem[] = res.map((data: any) => {
+        return createQiitaItem(
           data.id,
           data.title,
           data.user.id,
@@ -54,14 +54,43 @@ export const fetchPosts = async (setRows: Function) => {
     });
 };
 
-export const fetchPost = async (item_id: string) => {
-  try {
-    const response = await axios.get(
-      'https://qiita.com/api/v2/items' + item_id
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+export type QiitaItemDetal = {
+  id: string;
+  title: string;
+  rendered_body: string;
+};
+
+export const createQiitaItemDetail = (
+  id: string,
+  title: string,
+  rendered_body: string
+): QiitaItemDetal => {
+  return {
+    id,
+    title,
+    rendered_body,
+  };
+};
+
+export const fetchItem = async (id: string) => {
+  await axios
+    .get(`https://qiita.com/api/v2/items/${id}`, {
+      headers: {
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+    })
+    .then((response) => {
+      return JSON.parse(JSON.stringify(response.data));
+    })
+    .then((res) => {
+      const post: QiitaItemDetal = createQiitaItemDetail(
+        res.id,
+        res.title,
+        res.rendered_body
+      );
+      console.log(post);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
