@@ -32,9 +32,11 @@ export default function Home() {
   ];
 
   const [rows, setRows] = useState<QiitaItem[]>([]);
+  const [open, setOpen] = useState(false);
+  const [token, setToken] = useState<string>('');
 
   const handleGet = () => {
-    fetchItems(setRows);
+    fetchItems(setRows, token);
   };
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export default function Home() {
     <>
       <main>
         <div className="container">
-          <TopBar />
+          <TopBar setToken={setToken} open={open} setOpen={setOpen} />
           <PostsGrid rows={rows} columns={columnsDefault}></PostsGrid>
         </div>
       </main>

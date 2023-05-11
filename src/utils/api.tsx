@@ -24,14 +24,16 @@ export const createQiitaItem = (
   };
 };
 
-const ACCESS_TOKEN = '';
+export const fetchItems = async (setRows: Function, token: string) => {
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+      }
+    : {};
 
-export const fetchItems = async (setRows: Function) => {
   await axios
     .get('https://qiita.com/api/v2/items', {
-      headers: {
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-      },
+      headers: headers,
       params: { page: 1, per_page: 20 },
     })
     .then((response) => {
@@ -72,12 +74,16 @@ export const createQiitaItemDetail = (
   };
 };
 
-export const fetchItem = async (id: string) => {
+export const fetchItem = async (id: string, token: string) => {
+  const headers = token
+    ? {
+        Authorization: `Bearer ${token}`,
+      }
+    : {};
+
   await axios
     .get(`https://qiita.com/api/v2/items/${id}`, {
-      headers: {
-        Authorization: `Bearer ${ACCESS_TOKEN}`,
-      },
+      headers: headers,
     })
     .then((response) => {
       return JSON.parse(JSON.stringify(response.data));
