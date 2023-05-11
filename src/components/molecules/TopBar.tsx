@@ -16,12 +16,18 @@ import {
 import { ChangeEvent } from 'react';
 
 export interface TopBarProps {
+  token: string;
   setToken: (value: string) => void;
   open: boolean;
   setOpen: (value: boolean) => void;
 }
 
-export default function TopBar({ setToken, open, setOpen }: TopBarProps) {
+export default function TopBar({
+  token,
+  setToken,
+  open,
+  setOpen,
+}: TopBarProps) {
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -65,6 +71,7 @@ export default function TopBar({ setToken, open, setOpen }: TopBarProps) {
             margin="dense"
             id="api-token"
             label="API Token"
+            value={token}
             type="text"
             fullWidth
             onChange={handleTokenChange}

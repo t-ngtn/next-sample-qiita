@@ -49,7 +49,12 @@ export default function Home() {
     <>
       <main>
         <div className="container">
-          <TopBar setToken={setToken} open={open} setOpen={setOpen} />
+          <TopBar
+            token={token}
+            setToken={setToken}
+            open={open}
+            setOpen={setOpen}
+          />
           <Box
             m={2}
             display="flex"
