@@ -15,6 +15,7 @@ import {
   Typography,
 } from '@mui/material';
 import { ChangeEvent } from 'react';
+import Link from 'next/link';
 
 export interface TopBarProps {
   token: string;
@@ -49,6 +50,21 @@ export default function TopBar({
             Qiita Sample App
           </Typography>
           <Box flexGrow={1} />
+          <Link
+            href="https://github.com/t-ngtn/next-sample-qiita"
+            target="_blank"
+            rel="noopener"
+          >
+            <IconButton
+              size="large"
+              aria-label="setting Qiita API token"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="secondary"
+            >
+              <GitHubIcon />
+            </IconButton>
+          </Link>
           <IconButton
             size="large"
             aria-label="setting Qiita API token"
