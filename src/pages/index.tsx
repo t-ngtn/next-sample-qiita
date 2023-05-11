@@ -29,9 +29,7 @@ export default function Home() {
       flex: 1,
       renderCell: (params) => (
         <Link href={`/detail/${params.row.id}`}>
-          <StyledButton variant="contained" onClick={() => {}}>
-            Go
-          </StyledButton>
+          <StyledButton variant="contained">Go</StyledButton>
         </Link>
       ),
     },

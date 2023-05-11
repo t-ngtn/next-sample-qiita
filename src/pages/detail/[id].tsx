@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { apiTokenState } from '@/utils/state';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
+import Link from 'next/link';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function ItemDetal() {
   const router = useRouter();
@@ -26,6 +28,24 @@ export default function ItemDetal() {
   return (
     <div className="container">
       <TopBar token={token} setToken={setToken} open={open} setOpen={setOpen} />
+      <Box m={2}>
+        <Link href="/">
+          <IconButton
+            size="large"
+            aria-label="back"
+            color="primary"
+            sx={{
+              backgroundColor: '#ffffff',
+              '&:hover': {
+                backgroundColor: '#4caf50',
+                color: '#ffffff',
+              },
+            }}
+          >
+            <ArrowBackIcon />
+          </IconButton>
+        </Link>
+      </Box>
       <Box m={2}>
         <Typography variant="h4" component="h1">
           {item?.title}

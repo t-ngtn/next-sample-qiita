@@ -57,7 +57,7 @@ export default function TopBar({
           >
             <IconButton
               size="large"
-              aria-label="setting Qiita API token"
+              aria-label="move to GitHub repository"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               color="secondary"
