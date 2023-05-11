@@ -1,4 +1,5 @@
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import {
   AppBar,
   Box,

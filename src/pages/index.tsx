@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { QiitaItem, fetchItems } from '@/utils/api';
 import { StyledButton } from '@/components/atoms/Button';
-import TopBar from '@/components/molecules/TopBar';
+import TopBar from '@/components/organisms/TopBar';
 import PostsGrid from '@/components/molecules/DataGrid';
 import { GridColDef } from '@mui/x-data-grid';
 import { Box, Button, TextField } from '@mui/material';
@@ -65,7 +65,7 @@ export default function Home() {
             <TextField
               value={searchWord}
               onChange={(e) => setSearchWord(e.target.value)}
-              label="Search"
+              label="Search by words"
               variant="outlined"
               size="small"
               style={{ flex: 1, marginRight: 8 }}
