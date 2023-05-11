@@ -4,6 +4,7 @@ import { StyledButton } from '@/components/atoms/Button';
 import TopBar from '@/components/molecules/TopBar';
 import PostsGrid from '@/components/molecules/DataGrid';
 import { GridColDef } from '@mui/x-data-grid';
+import { Box, Button, TextField } from '@mui/material';
 
 export default function Home() {
   const columnsDefault: GridColDef[] = [
@@ -34,9 +35,10 @@ export default function Home() {
   const [rows, setRows] = useState<QiitaItem[]>([]);
   const [open, setOpen] = useState(false);
   const [token, setToken] = useState<string>('');
+  const [searchWord, setSearchWord] = useState<string>('');
 
   const handleGet = () => {
-    fetchItems(setRows, token);
+    fetchItems(setRows, token, searchWord);
   };
 
   useEffect(() => {
@@ -48,6 +50,25 @@ export default function Home() {
       <main>
         <div className="container">
           <TopBar setToken={setToken} open={open} setOpen={setOpen} />
+          <Box
+            m={2}
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            {' '}
+            <TextField
+              value={searchWord}
+              onChange={(e) => setSearchWord(e.target.value)}
+              label="Search"
+              variant="outlined"
+              size="small"
+              style={{ flex: 1, marginRight: 8 }}
+            />
+            <StyledButton variant="contained" onClick={handleGet}>
+              Serach
+            </StyledButton>
+          </Box>
           <PostsGrid rows={rows} columns={columnsDefault}></PostsGrid>
         </div>
       </main>

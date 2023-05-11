@@ -24,17 +24,25 @@ export const createQiitaItem = (
   };
 };
 
-export const fetchItems = async (setRows: Function, token: string) => {
+export const fetchItems = async (
+  setRows: Function,
+  token: string,
+  word: string
+) => {
   const headers = token
     ? {
         Authorization: `Bearer ${token}`,
       }
     : {};
 
+  const params = word
+    ? { page: 1, per_page: 20, query: word }
+    : { page: 1, per_page: 20 };
+
   await axios
     .get('https://qiita.com/api/v2/items', {
       headers: headers,
-      params: { page: 1, per_page: 20 },
+      params: params,
     })
     .then((response) => {
       return JSON.parse(JSON.stringify(response.data));
