@@ -46,7 +46,7 @@ export default function Home() {
 
   useEffect(() => {
     handleGet();
-  }, []);
+  }, [token]);
 
   return (
     <>
@@ -77,7 +77,15 @@ export default function Home() {
               Serach
             </StyledButton>
           </Box>
-          <PostsGrid rows={rows} columns={columnsDefault}></PostsGrid>
+          {rows.length !== 0 ? (
+            <PostsGrid rows={rows} columns={columnsDefault} />
+          ) : (
+            <p>
+              Loading... or You may have been caught in a rate limit, please
+              enter a Qiita API token from the setting button in the upper right
+              corner
+            </p>
+          )}
         </div>
       </main>
     </>

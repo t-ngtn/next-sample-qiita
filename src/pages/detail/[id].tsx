@@ -55,7 +55,10 @@ export default function ItemDetal() {
         {item?.rendered_body ? (
           <div dangerouslySetInnerHTML={{ __html: item.rendered_body }} />
         ) : (
-          <p>Loading...</p>
+          <p>
+            Loading... or You may have been caught in a rate limit, please enter
+            a Qiita API token from the setting button in the upper right corner
+          </p>
         )}
       </Box>
     </div>
