@@ -82,7 +82,11 @@ export const createQiitaItemDetail = (
   };
 };
 
-export const fetchItem = async (id: string, token: string) => {
+export const fetchItem = async (
+  setItem: Function,
+  id: string,
+  token: string
+) => {
   const headers = token
     ? {
         Authorization: `Bearer ${token}`,
@@ -102,7 +106,7 @@ export const fetchItem = async (id: string, token: string) => {
         res.title,
         res.rendered_body
       );
-      console.log(post);
+      setItem(post);
     })
     .catch((error) => {
       console.log(error);

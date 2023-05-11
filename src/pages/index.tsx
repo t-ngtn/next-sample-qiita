@@ -4,7 +4,10 @@ import { StyledButton } from '@/components/atoms/Button';
 import TopBar from '@/components/organisms/TopBar';
 import PostsGrid from '@/components/molecules/DataGrid';
 import { GridColDef } from '@mui/x-data-grid';
-import { Box, Button, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
+import Link from 'next/link';
+import { useRecoilState } from 'recoil';
+import { apiTokenState } from '@/utils/state';
 
 export default function Home() {
   const columnsDefault: GridColDef[] = [
@@ -24,17 +27,19 @@ export default function Home() {
       sortable: false,
       width: 90,
       flex: 1,
-      renderCell: () => (
-        <StyledButton variant="contained" onClick={() => {}}>
-          Go
-        </StyledButton>
+      renderCell: (params) => (
+        <Link href={`/detail/${params.row.id}`}>
+          <StyledButton variant="contained" onClick={() => {}}>
+            Go
+          </StyledButton>
+        </Link>
       ),
     },
   ];
 
   const [rows, setRows] = useState<QiitaItem[]>([]);
   const [open, setOpen] = useState(false);
-  const [token, setToken] = useState<string>('');
+  const [token, setToken] = useRecoilState(apiTokenState);
   const [searchWord, setSearchWord] = useState<string>('');
 
   const handleGet = () => {
