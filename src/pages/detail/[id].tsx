@@ -2,7 +2,7 @@ import TopBar from '@/components/organisms/TopBar';
 import { QiitaItemDetal, fetchItem } from '@/utils/api';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { apiTokenState } from '@/utils/state';
 import { Box, Typography, IconButton } from '@mui/material';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ export default function ItemDetal() {
   const router = useRouter();
   const { id } = router.query;
   const [item, setItem] = useState<QiitaItemDetal>();
-  const [token, setToken] = useRecoilState(apiTokenState);
+  const [token, setToken] = useAtom(apiTokenState);
   const [open, setOpen] = useState(false);
 
   const handleGetById = () => {

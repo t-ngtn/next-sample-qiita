@@ -2,7 +2,7 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { RecoilRoot } from 'recoil';
+import { Provider } from 'jotai';
 
 const theme = createTheme({
   palette: {
@@ -32,9 +32,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <RecoilRoot>
+        <Provider>
           <Component {...pageProps} />
-        </RecoilRoot>
+        </Provider>
       </ThemeProvider>
     </>
   );

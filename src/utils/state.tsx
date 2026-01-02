@@ -1,6 +1,3 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const apiTokenState = atom({
-  key: 'token',
-  default: '',
-});
+export const apiTokenState = atom('');

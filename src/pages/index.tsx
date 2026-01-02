@@ -6,7 +6,7 @@ import PostsGrid from '@/components/molecules/DataGrid';
 import { GridColDef } from '@mui/x-data-grid';
 import { Box, TextField } from '@mui/material';
 import Link from 'next/link';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { apiTokenState } from '@/utils/state';
 
 export default function Home() {
@@ -37,7 +37,7 @@ export default function Home() {
 
   const [rows, setRows] = useState<QiitaItem[]>([]);
   const [open, setOpen] = useState(false);
-  const [token, setToken] = useRecoilState(apiTokenState);
+  const [token, setToken] = useAtom(apiTokenState);
   const [searchWord, setSearchWord] = useState<string>('');
 
   const handleGet = () => {
